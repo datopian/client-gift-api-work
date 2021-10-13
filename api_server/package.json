@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "os-types": "^1.17.0"
+  }
+}

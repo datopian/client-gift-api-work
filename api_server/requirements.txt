@@ -1,0 +1,7 @@
+frictionless[sql]  # need to install the SQL plugin
+psycopg2  # needed to upload data to the DB
+python-dotenv  # needed to load password for DB connection string
+wheel  # avoid warnings when installing packages
+python-dateutil  # needed for babbage
+babbage  # API server
+flask  # for babbage

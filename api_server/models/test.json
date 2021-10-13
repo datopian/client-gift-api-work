@@ -1,0 +1,146 @@
+{
+  "dimensions": {
+    "phase": {
+      "dimensionType": "other",
+      "primaryKey": ["budgetphase"],
+      "attributes": {
+        "budgetphase": {
+          "source": "budgetphase",
+          "title": "budgetphase"
+        },
+        "key_attribute": { "None": null }
+      }
+    },
+    "administrative-classification": {
+      "dimensionType": "classification",
+      "primaryKey": ["votenumber"],
+      "attributes": {
+        "department": {
+          "source": "department",
+          "title": "department",
+          "labelfor": "votenumber"
+        },
+        "votenumber": {
+          "source": "votenumber",
+          "title": "votenumber"
+        }
+      },
+      "classificationType": "administrative"
+    },
+    "economic-classification": {
+      "dimensionType": "classification",
+      "primaryKey": [
+        "economicclassification1",
+        "economicclassification2",
+        "economicclassification3",
+        "economicclassification4",
+        "econtomicclassification5"
+      ],
+      "attributes": {
+        "economicclassification1": {
+          "source": "economicclassification1",
+          "title": "economicclassification1"
+        },
+        "economicclassification2": {
+          "source": "economicclassification2",
+          "title": "economicclassification2",
+          "parent": "economicclassification1"
+        },
+        "economicclassification3": {
+          "source": "economicclassification3",
+          "title": "economicclassification3",
+          "parent": "economicclassification2"
+        },
+        "economicclassification4": {
+          "source": "economicclassification4",
+          "title": "economicclassification4",
+          "parent": "economicclassification3"
+        },
+        "econtomicclassification5": {
+          "source": "econtomicclassification5",
+          "title": "econtomicclassification5",
+          "parent": "economicclassification4"
+        }
+      },
+      "classificationType": "economic"
+    },
+    "date": {
+      "dimensionType": "datetime",
+      "primaryKey": ["financialyear"],
+      "attributes": {
+        "financialyear": {
+          "source": "financialyear",
+          "title": "financialyear"
+        }
+      }
+    },
+    "functional-classification": {
+      "dimensionType": "classification",
+      "primaryKey": ["functiongroup1", "functiongroup2"],
+      "attributes": {
+        "functiongroup1": {
+          "source": "functiongroup1",
+          "title": "functiongroup1"
+        },
+        "functiongroup2": {
+          "source": "functiongroup2",
+          "title": "functiongroup2",
+          "parent": "functiongroup1"
+        }
+      },
+      "classificationType": "functional"
+    },
+    "activity": {
+      "dimensionType": "activity",
+      "primaryKey": ["prognumber", "subprognumber"],
+      "attributes": {
+        "programme": {
+          "source": "programme",
+          "title": "programme",
+          "labelfor": "prognumber"
+        },
+        "prognumber": {
+          "source": "prognumber",
+          "title": "prognumber"
+        },
+        "subprogramme": {
+          "source": "subprogramme",
+          "title": "subprogramme",
+          "labelfor": "subprognumber"
+        },
+        "subprognumber": {
+          "source": "subprognumber",
+          "title": "subprognumber",
+          "parent": "prognumber"
+        }
+      }
+    },
+    "value-kind": {
+      "dimensionType": "other",
+      "primaryKey": ["amountkind"],
+      "attributes": {
+        "amountkind": {
+          "source": "amountkind",
+          "title": "amountkind"
+        }
+      }
+    },
+    "geo-source": {
+      "dimensionType": "location",
+      "primaryKey": ["government"],
+      "attributes": {
+        "government": {
+          "source": "government",
+          "title": "government"
+        }
+      }
+    }
+  },
+  "measures": {
+    "value": {
+      "source": "value",
+      "title": "value"
+    }
+  },
+  "fact_table": "5a25dc2b975eb85bb58a44a3a206d85c17b0f3fe35167d9ba535b5c15421be1"
+}

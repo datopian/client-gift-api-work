@@ -4,7 +4,7 @@ from babbage.manager import JSONCubeManager
 from babbage.api import configure_api
 
 app = Flask('demo')
-engine = create_engine('postgresql://postgres:Nxp4rS9fmrSmFKUSZkNh@localhost/testing')
+engine = create_engine('postgresql://steveoni@localhost/testing')
 models_directory = 'models/'
 manager = JSONCubeManager(engine, models_directory)
 blueprint = configure_api(app, manager)

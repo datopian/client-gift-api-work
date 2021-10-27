@@ -79,7 +79,7 @@ def get_resource_path(
     resource_name = resource["hash"]  # resource name is set by hash
 
     # URL-encode "=" char at the end
-    dataset_id = datapackage["id"][:-1] + "%3D"
+    dataset_id = datapackage["id"]
 
     resource_url = f"{google_cloud_base_url}/{dataset_id}/{resource_name}"
     return resource_url

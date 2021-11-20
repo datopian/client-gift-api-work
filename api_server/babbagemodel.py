@@ -11,7 +11,7 @@ import requests
 import json
 from google.cloud import storage
 import os
-
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] =  '/Users/steveoni/Downloads/gift-data-110ad1f62153.json'
 
 slugger = Slugify(separator="_", safe_chars="-.")
 
@@ -25,8 +25,8 @@ def dpkg_pipeline(org_name):
         json.dump(dpkg['babbageModel'], outfile)
 
 def generate_babbage(dpkg):
-    _, db_table, _ = extract_storage_ids(dpkg)
-
+    # _, db_table, _ = extract_storage_ids(dpkg)
+    db_table = dpkg["resources"][0]["hash"][:63]
     source = dpkg["resources"][0]["schema"]
     kinds = sorted(set(
         f['columnType'].split(':')[0]
@@ -145,6 +145,6 @@ def cloud_storage():
         print(blob)
 
 if __name__ == "__main__":
-    # print("IN HERE")
-    # dpkg_pipeline("estimates-of-national-expenditure-2021-22")
-    cloud_storage()
+    print("IN HERE")
+    dpkg_pipeline("south-africa-national-estimates-2015-2019")
+    # cloud_storage()

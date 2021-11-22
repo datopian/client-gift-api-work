@@ -38,7 +38,7 @@ def pipeline(org):
     print("Downloading resources from Google bucket")
     cloud_storage(dpkg, org)
 
-    run datapackage-pipeline command line
+    # run datapackage-pipeline command line
     print("START PIPELINE SUBCOMMAND")
     runpipeline_subcommand(org)
 

@@ -1,0 +1,173 @@
+title: mexico
+dataset-name: mexico
+resource-name: mexico
+owner-id: R_kgDOGLhFbw
+sources:
+- url: ./data/presupuesto_mexico__2008.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2009.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2010.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2011.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2012.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2013.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2014.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2015.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2016.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2017.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2018.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2019.csv
+  encoding: utf-8
+- url: ./data/presupuesto_mexico__2020.csv
+  encoding: utf-8
+fields:
+- header: CICLO
+  columnType: date:fiscal-year
+  options: {}
+- header: DESC_AI
+  columnType: functional-classification:generic:level4:label
+  options: {}
+- header: DESC_CAPITULO
+  columnType: economic-classification:generic:level1:label
+  options: {}
+- header: DESC_CONCEPTO
+  columnType: economic-classification:generic:level2:label
+  options: {}
+- header: DESC_FF
+  columnType: fin-source:generic:label
+  options: {}
+- header: DESC_FUNCION
+  columnType: functional-classification:generic:level2:label
+  options: {}
+- header: DESC_GPO_FUNCIONAL
+  columnType: functional-classification:generic:level1:label
+  options: {}
+- header: DESC_MODALIDAD
+  columnType: activity:generic:program:label
+  options: {}
+- header: DESC_PARTIDA_ESPECIFICA
+  columnType: economic-classification:generic:level4:label
+  options: {}
+- header: DESC_PARTIDA_GENERICA
+  columnType: economic-classification:generic:level3:label
+  options: {}
+- header: DESC_PP
+  columnType: activity:generic:program:label
+  options: {}
+- header: DESC_RAMO
+  columnType: administrative-classification:generic:level1:label
+  options: {}
+- header: DESC_SUBFUNCION
+  columnType: functional-classification:generic:level3:label
+  options: {}
+- header: DESC_TIPOGASTO
+  columnType: expenditure-type:label
+  options: {}
+- header: DESC_UR
+  columnType: administrative-classification:generic:level2:label
+  options: {}
+- header: ENTIDAD_FEDERATIVA
+  columnType: geo-source:target:title
+  options: {}
+- header: GPO_FUNCIONAL
+  columnType: functional-classification:generic:level1:code
+  options: {}
+- header: ID_AI
+  columnType: functional-classification:generic:level4:code
+  options: {}
+- header: ID_CAPITULO
+  columnType: economic-classification:generic:level1:code
+  options: {}
+- header: ID_CLAVE_CARTERA
+  columnType: budget-line-id
+  options: {}
+- header: ID_CONCEPTO
+  columnType: economic-classification:generic:level2:code
+  options: {}
+- header: ID_ENTIDAD_FEDERATIVA
+  columnType: geo-source:target:code
+  options: {}
+- header: ID_FF
+  columnType: fin-source:generic:code
+  options: {}
+- header: ID_FUNCION
+  columnType: functional-classification:generic:level2:code
+  options: {}
+- header: ID_MODALIDAD
+  columnType: activity:generic:program:code
+  options: {}
+- header: ID_PARTIDA_ESPECIFICA
+  columnType: economic-classification:generic:level4:code
+  options: {}
+- header: ID_PARTIDA_GENERICA
+  columnType: economic-classification:generic:level3:code
+  options: {}
+- header: ID_PP
+  columnType: activity:generic:program:code
+  options: {}
+- header: ID_RAMO
+  columnType: administrative-classification:generic:level1:code
+  options: {}
+- header: ID_SUBFUNCION
+  columnType: functional-classification:generic:level3:code
+  options: {}
+- header: ID_TIPOGASTO
+  columnType: expenditure-type:code
+  options: {}
+- header: ID_UR
+  columnType: administrative-classification:generic:level2:code
+  options: {}
+- header: MONTO_ADEFAS
+  columnType: value
+  options:
+    groupChar: ','
+    decimalChar: .
+- header: MONTO_APROBADO
+  columnType: value
+  options:
+    groupChar: ','
+    decimalChar: .
+- header: MONTO_DEVENGADO
+  columnType: value
+  options:
+    groupChar: ','
+    decimalChar: .
+- header: MONTO_EJERCICIO
+  columnType: value
+  options:
+    groupChar: ','
+    decimalChar: .
+- header: MONTO_EJERCIDO
+  columnType: value
+  options:
+    groupChar: ','
+    decimalChar: .
+- header: MONTO_MODIFICADO
+  columnType: value
+  options:
+    groupChar: ','
+    decimalChar: .
+- header: MONTO_PAGADO
+  columnType: value
+  options:
+    groupChar: ','
+    decimalChar: .
+deduplicate: true
+postprocessing:
+- processor: clean-data
+  parameters:
+    columns:
+    - ID_CLAVE_CARTERA
+    - ENTIDAD_FEDERATIVA
+    - ID_ENTIDAD_FEDERATIVA
+    - DESC_PP
+    - ID_PP

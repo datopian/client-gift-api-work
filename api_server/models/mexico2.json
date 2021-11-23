@@ -1,0 +1,460 @@
+{
+  "fact_table": "R_kgDOGLhFbw4edfc924721abb77",
+  "dimensions": {
+    "CICLO": {
+      "attributes": {
+        "CICLO": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_3.CICLO",
+          "label": "CICLO",
+          "type": "integer"
+        }
+      },
+      "key_attribute": "CICLO",
+      "label": "CICLO",
+      "join_column": [
+        "date_id",
+        "_fdp__id_"
+      ]
+    },
+    "GPO_FUNCIONAL": {
+      "attributes": {
+        "GPO_FUNCIONAL": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_7.GPO_FUNCIONAL",
+          "label": "GPO_FUNCIONAL",
+          "type": "string"
+        },
+        "DESC_GPO_FUNCIONAL": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_7.DESC_GPO_FUNCIONAL",
+          "label": "DESC_GPO_FUNCIONAL",
+          "type": "string"
+        }
+      },
+      "key_attribute": "GPO_FUNCIONAL",
+      "label": "GPO_FUNCIONAL",
+      "join_column": [
+        "functional_classification_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_GPO_FUNCIONAL"
+    },
+    "ID_AI": {
+      "attributes": {
+        "ID_AI": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_7.ID_AI",
+          "label": "ID_AI",
+          "type": "string"
+        },
+        "DESC_AI": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_7.DESC_AI",
+          "label": "DESC_AI",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_AI",
+      "label": "ID_AI",
+      "join_column": [
+        "functional_classification_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_AI"
+    },
+    "ID_FUNCION": {
+      "attributes": {
+        "ID_FUNCION": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_7.ID_FUNCION",
+          "label": "ID_FUNCION",
+          "type": "string"
+        },
+        "DESC_FUNCION": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_7.DESC_FUNCION",
+          "label": "DESC_FUNCION",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_FUNCION",
+      "label": "ID_FUNCION",
+      "join_column": [
+        "functional_classification_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_FUNCION"
+    },
+    "ID_SUBFUNCION": {
+      "attributes": {
+        "ID_SUBFUNCION": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_7.ID_SUBFUNCION",
+          "label": "ID_SUBFUNCION",
+          "type": "string"
+        },
+        "DESC_SUBFUNCION": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_7.DESC_SUBFUNCION",
+          "label": "DESC_SUBFUNCION",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_SUBFUNCION",
+      "label": "ID_SUBFUNCION",
+      "join_column": [
+        "functional_classification_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_SUBFUNCION"
+    },
+    "ID_CAPITULO": {
+      "attributes": {
+        "ID_CAPITULO": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_4.ID_CAPITULO",
+          "label": "ID_CAPITULO",
+          "type": "string"
+        },
+        "DESC_CAPITULO": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_4.DESC_CAPITULO",
+          "label": "DESC_CAPITULO",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_CAPITULO",
+      "label": "ID_CAPITULO",
+      "join_column": [
+        "economic_classification_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_CAPITULO"
+    },
+    "ID_CONCEPTO": {
+      "attributes": {
+        "ID_CONCEPTO": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_4.ID_CONCEPTO",
+          "label": "ID_CONCEPTO",
+          "type": "string"
+        },
+        "DESC_CONCEPTO": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_4.DESC_CONCEPTO",
+          "label": "DESC_CONCEPTO",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_CONCEPTO",
+      "label": "ID_CONCEPTO",
+      "join_column": [
+        "economic_classification_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_CONCEPTO"
+    },
+    "ID_PARTIDA_ESPECIFICA": {
+      "attributes": {
+        "ID_PARTIDA_ESPECIFICA": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_4.ID_PARTIDA_ESPECIFICA",
+          "label": "ID_PARTIDA_ESPECIFICA",
+          "type": "string"
+        },
+        "DESC_PARTIDA_ESPECIFICA": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_4.DESC_PARTIDA_ESPECIFICA",
+          "label": "DESC_PARTIDA_ESPECIFICA",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_PARTIDA_ESPECIFICA",
+      "label": "ID_PARTIDA_ESPECIFICA",
+      "join_column": [
+        "economic_classification_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_PARTIDA_ESPECIFICA"
+    },
+    "ID_PARTIDA_GENERICA": {
+      "attributes": {
+        "ID_PARTIDA_GENERICA": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_4.ID_PARTIDA_GENERICA",
+          "label": "ID_PARTIDA_GENERICA",
+          "type": "string"
+        },
+        "DESC_PARTIDA_GENERICA": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_4.DESC_PARTIDA_GENERICA",
+          "label": "DESC_PARTIDA_GENERICA",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_PARTIDA_GENERICA",
+      "label": "ID_PARTIDA_GENERICA",
+      "join_column": [
+        "economic_classification_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_PARTIDA_GENERICA"
+    },
+    "ID_FF": {
+      "attributes": {
+        "ID_FF": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_6.ID_FF",
+          "label": "ID_FF",
+          "type": "string"
+        },
+        "DESC_FF": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_6.DESC_FF",
+          "label": "DESC_FF",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_FF",
+      "label": "ID_FF",
+      "join_column": [
+        "fin_source_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_FF"
+    },
+    "DESC_PP": {
+      "attributes": {
+        "DESC_PP": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_0.DESC_PP",
+          "label": "DESC_PP",
+          "type": "string"
+        }
+      },
+      "key_attribute": "DESC_PP",
+      "label": "DESC_PP",
+      "join_column": [
+        "activity_id",
+        "_fdp__id_"
+      ]
+    },
+    "ID_MODALIDAD": {
+      "attributes": {
+        "ID_MODALIDAD": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_0.ID_MODALIDAD",
+          "label": "ID_MODALIDAD",
+          "type": "string"
+        },
+        "DESC_MODALIDAD": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_0.DESC_MODALIDAD",
+          "label": "DESC_MODALIDAD",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_MODALIDAD",
+      "label": "ID_MODALIDAD",
+      "join_column": [
+        "activity_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_MODALIDAD"
+    },
+    "ID_PP": {
+      "attributes": {
+        "ID_PP": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_0.ID_PP",
+          "label": "ID_PP",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_PP",
+      "label": "ID_PP",
+      "join_column": [
+        "activity_id",
+        "_fdp__id_"
+      ]
+    },
+    "ID_RAMO": {
+      "attributes": {
+        "ID_RAMO": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_1.ID_RAMO",
+          "label": "ID_RAMO",
+          "type": "string"
+        },
+        "DESC_RAMO": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_1.DESC_RAMO",
+          "label": "DESC_RAMO",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_RAMO",
+      "label": "ID_RAMO",
+      "join_column": [
+        "administrative_classification_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_RAMO"
+    },
+    "ID_UR": {
+      "attributes": {
+        "ID_UR": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_1.ID_UR",
+          "label": "ID_UR",
+          "type": "string"
+        },
+        "DESC_UR": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_1.DESC_UR",
+          "label": "DESC_UR",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_UR",
+      "label": "ID_UR",
+      "join_column": [
+        "administrative_classification_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_UR"
+    },
+    "ID_TIPOGASTO": {
+      "attributes": {
+        "ID_TIPOGASTO": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_5.ID_TIPOGASTO",
+          "label": "ID_TIPOGASTO",
+          "type": "string"
+        },
+        "DESC_TIPOGASTO": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_5.DESC_TIPOGASTO",
+          "label": "DESC_TIPOGASTO",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_TIPOGASTO",
+      "label": "ID_TIPOGASTO",
+      "join_column": [
+        "expenditure_type_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "DESC_TIPOGASTO"
+    },
+    "ID_ENTIDAD_FEDERATIVA": {
+      "attributes": {
+        "ID_ENTIDAD_FEDERATIVA": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_8.ID_ENTIDAD_FEDERATIVA",
+          "label": "ID_ENTIDAD_FEDERATIVA",
+          "type": "string"
+        },
+        "ENTIDAD_FEDERATIVA": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_8.ENTIDAD_FEDERATIVA",
+          "label": "ENTIDAD_FEDERATIVA",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_ENTIDAD_FEDERATIVA",
+      "label": "ID_ENTIDAD_FEDERATIVA",
+      "join_column": [
+        "geo_source_id",
+        "_fdp__id_"
+      ],
+      "label_attribute": "ENTIDAD_FEDERATIVA"
+    },
+    "ID_CLAVE_CARTERA": {
+      "attributes": {
+        "ID_CLAVE_CARTERA": {
+          "column": "R_kgDOGLhFbw4edfc924721abb77_2.ID_CLAVE_CARTERA",
+          "label": "ID_CLAVE_CARTERA",
+          "type": "string"
+        }
+      },
+      "key_attribute": "ID_CLAVE_CARTERA",
+      "label": "ID_CLAVE_CARTERA",
+      "join_column": [
+        "budget_line_id_id",
+        "_fdp__id_"
+      ]
+    }
+  },
+  "hierarchies": {
+    "date": {
+      "label": "date",
+      "levels": [
+        "CICLO"
+      ]
+    },
+    "functional_classification": {
+      "label": "functional_classification",
+      "levels": [
+        "GPO_FUNCIONAL",
+        "ID_FUNCION",
+        "ID_SUBFUNCION",
+        "ID_AI"
+      ]
+    },
+    "economic_classification": {
+      "label": "economic_classification",
+      "levels": [
+        "ID_CAPITULO",
+        "ID_CONCEPTO",
+        "ID_PARTIDA_GENERICA",
+        "ID_PARTIDA_ESPECIFICA"
+      ]
+    },
+    "fin_source": {
+      "label": "fin_source",
+      "levels": [
+        "ID_FF"
+      ]
+    },
+    "activity": {
+      "label": "activity",
+      "levels": [
+        "ID_MODALIDAD",
+        "ID_PP"
+      ]
+    },
+    "administrative_classification": {
+      "label": "administrative_classification",
+      "levels": [
+        "ID_RAMO",
+        "ID_UR"
+      ]
+    },
+    "expenditure_type": {
+      "label": "expenditure_type",
+      "levels": [
+        "ID_TIPOGASTO"
+      ]
+    },
+    "geo_source": {
+      "label": "geo_source",
+      "levels": [
+        "ID_ENTIDAD_FEDERATIVA"
+      ]
+    },
+    "budget_line_id": {
+      "label": "budget_line_id",
+      "levels": [
+        "ID_CLAVE_CARTERA"
+      ]
+    }
+  },
+  "measures": {
+    "MONTO_ADEFAS": {
+      "column": "MONTO_ADEFAS",
+      "label": "MONTO_ADEFAS",
+      "type": "number"
+    },
+    "MONTO_APROBADO": {
+      "column": "MONTO_APROBADO",
+      "label": "MONTO_APROBADO",
+      "type": "number"
+    },
+    "MONTO_DEVENGADO": {
+      "column": "MONTO_DEVENGADO",
+      "label": "MONTO_DEVENGADO",
+      "type": "number"
+    },
+    "MONTO_EJERCICIO": {
+      "column": "MONTO_EJERCICIO",
+      "label": "MONTO_EJERCICIO",
+      "type": "number"
+    },
+    "MONTO_EJERCIDO": {
+      "column": "MONTO_EJERCIDO",
+      "label": "MONTO_EJERCIDO",
+      "type": "number"
+    },
+    "MONTO_MODIFICADO": {
+      "column": "MONTO_MODIFICADO",
+      "label": "MONTO_MODIFICADO",
+      "type": "number"
+    },
+    "MONTO_PAGADO": {
+      "column": "MONTO_PAGADO",
+      "label": "MONTO_PAGADO",
+      "type": "number"
+    }
+  }
+}

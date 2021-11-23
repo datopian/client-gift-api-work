@@ -1,0 +1,8 @@
+opsapienv
+**/.dpp/
+**/json2yaml/
+**/**/.dpp/
+**/**/normalized/
+**/**/denormalized/
+**/**/final/
+**/samples/

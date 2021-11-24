@@ -4,6 +4,9 @@ import requests
 import os
 import subprocess
 from google.cloud import storage
+from shutil import copyfile
+from converter import datapackage2yml
+
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] =  '/Users/steveoni/Downloads/gift-data-110ad1f62153.json'
 
 def update_fiscal_schema(org):
@@ -47,13 +50,28 @@ def runpipeline_subcommand(org):
     except subprocess.CalledProcessError as e:
         print(e.output)
         raise(e)
+
+def generate_org(org, dpkg):
+    """
+    Generate organisation folder
+    containing all neccessary files for
+    creating api pipeline
+    """
+
+    # create directory
+    os.mkdir(org)
+    os.mkdir(f'{org}/data')
+
+    org_path = os.path.abspath(org)
+    copyfile(f'{os.getcwd()}/clean-data.py', f'{org_path}/clean-data.py' )
+    datapackage2yml(dpkg, org_path)
     
 
 if __name__== "__main__":
-    org = "mexico"
+    org = "costa-rica-presupuesto-egresos"
     github_dpkg = f'https://raw.githubusercontent.com/gift-data/{org}/main/datapackage.json'
     dpkg = requests.get(github_dpkg).json()
-    runpipeline_subcommand(org)
-    # cloud_storage(dpkg,org)
+    # runpipeline_subcommand(org)
+    generate_org(org, dpkg)
     
 

@@ -1,0 +1,90 @@
+title: south-africa-national-estimates-2015-2019
+dataset-name: south-africa-national-estimates-2015-2019
+resource-name: south-africa-national-estimates-2015-2019
+owner-id: R_kgDOGKpJlw
+sources:
+- url: ./data/budget-vs-actual-national__2015.csv
+  encoding: utf-8
+- url: ./data/budget-vs-actual-national__2016.csv
+  encoding: utf-8
+
+fields:
+- header: budgetphase
+  columnType: phase:id
+  options: {}
+- header: department
+  columnType: administrative-classification:generic:label
+  options: {}
+- header: economicclassification1
+  columnType: economic-classification:generic:level1:code
+  options: {}
+- header: economicclassification2
+  columnType: economic-classification:generic:level2:code
+  options: {}
+- header: economicclassification3
+  columnType: economic-classification:generic:level3:code
+  options: {}
+- header: economicclassification4
+  columnType: economic-classification:generic:level3:code
+  options: {}
+- header: financialyear
+  columnType: date:fiscal-year
+  options: {}
+- header: functiongroup1
+  columnType: functional-classification:generic:level1:code
+  options: {}
+- header: programme
+  columnType: activity:generic:program:label
+  options: {}
+- header: prognumber
+  columnType: activity:generic:program:code
+  options: {}
+- header: subprogramme
+  columnType: activity:generic:subprogram:label
+  options: {}
+- header: subprognumber
+  columnType: activity:generic:subprogram:code
+  options: {}
+- header: value
+  columnType: value
+  options:
+    groupChar: ','
+    decimalChar: .
+- header: votenumber
+  columnType: administrative-classification:generic:code
+  options: {}
+- header: amountkind
+  columnType: value-kind:code
+  options: {}
+- header: econtomicclassification5
+  columnType: economic-classification:generic:level5:code
+  options: {}
+- header: functiongroup2
+  columnType: functional-classification:generic:level2:code
+  options: {}
+- header: government
+  columnType: geo-source:target:code
+  options: {}
+deduplicate: true
+postprocessing:
+- processor: clean-data
+  parameters:
+    columns:
+    - budgetphase
+    - department
+    - economicclassification1
+    - economicclassification2
+    - economicclassification3
+    - economicclassification4
+    - financialyear
+    - functiongroup1
+    - programme
+    - prognumber
+    - subprogramme
+    - subprognumber
+    - value
+    - votenumber
+    - amountkind
+    - econtomicclassification5
+    - functiongroup2
+    - government

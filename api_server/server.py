@@ -11,7 +11,7 @@ import os
 log = logging.getLogger(__name__)
 
 app = Flask(__name__)
-engine = create_engine('postgresql://steveoni@localhost/testing')
+engine = create_engine(os.getenv('POSTGRES_CONNECTION_STR'))
 models_directory = 'models/'
 manager = JSONCubeManager(engine, models_directory)
 blueprint = configure_api(app, manager)
@@ -28,7 +28,8 @@ def pipeline(org):
     dpkg = requests.get(github_dpkg).json()
 
     # check if organisation folder already exist
-    if (not os.path.isdir(org)):
+    org_path = os.path.abspath(f'orgs/{org}')
+    if (not os.path.isdir(org_path)):
         generate_org(org, dpkg)
 
     # update fiscal YAML file
@@ -45,4 +46,7 @@ def pipeline(org):
     return "done"
 
 
-app.run(host="localhost", port=3000, debug=True)
+if __name__ == '__main__':
+    app.run(debug=True,host='0.0.0.0')
+
+# app.run(host="localhost", port=3000, debug=True)

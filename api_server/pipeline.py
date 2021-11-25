@@ -37,7 +37,7 @@ def cloud_storage(dpkg,org):
     if not os.path.isdir(f'{org_path}/data'):
         os.mkdir(f'{org_directory}/data')
     
-    for resource in dpkg["resources"][:2]:
+    for resource in dpkg["resources"]:
         rname = f'gift-data/{owner_id}/{resource["hash"]}'
         lname = f"{org_directory}/data/{resource['name']}"
 

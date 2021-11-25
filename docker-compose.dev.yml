@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  gift-dev:
+    build:
+      context: api_server/
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env
+    ports:
+      - "0.0.0.0:3000:5000"
+    volumes:
+      - /Users/steveoni/Downloads/gift-data-110ad1f62153.json:/tmp/keys/gift-data-110ad1f62153.json
+  gift-db:
+    container_name: gift-db
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+volumes:
+  pg_data:

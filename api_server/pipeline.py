@@ -6,11 +6,10 @@ from google.cloud import storage
 from converter import datapackage2yml
 from shutil import copyfile
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] =  '/Users/steveoni/Downloads/gift-data-110ad1f62153.json'
 
 
 def update_fiscal_schema(org):
-    org_directory = os.path.join(os.getcwd(), org)
+    org_directory = os.path.join(os.getcwd(), f'orgs/{org}')
     org_yml = org_directory + "/fiscal.source-spec.yaml"
     github_dpkg = f'https://raw.githubusercontent.com/gift-data/{org}/main/datapackage.json'
     dpkg = requests.get(github_dpkg).json()
@@ -32,9 +31,12 @@ def cloud_storage(dpkg,org):
     bucket = storage_client.get_bucket(bucket_name)
 
     owner_id = dpkg["id"]
-    org_directory = os.path.join(os.getcwd(), org)
+    org_directory = os.path.join(os.getcwd(), f'orgs/{org}')
 
-    os.mkdir(f'{org_directory}/data')
+    org_path = os.path.abspath(f'orgs/{org}')
+    if not os.path.isdir(f'{org_path}/data'):
+        os.mkdir(f'{org_directory}/data')
+    
     for resource in dpkg["resources"][:2]:
         rname = f'gift-data/{owner_id}/{resource["hash"]}'
         lname = f"{org_directory}/data/{resource['name']}"
@@ -45,7 +47,7 @@ def cloud_storage(dpkg,org):
 
 def runpipeline_subcommand(org):
     try:
-        subprocess.call(["dpp", "run", "all"], cwd=f"./{org}")
+        subprocess.call(["dpp", "run", "all"], cwd=f"./orgs/{org}")
     except subprocess.CalledProcessError as e:
         print(e.output)
         raise(e)
@@ -59,10 +61,10 @@ def generate_org(org, dpkg):
     """
 
     # create directory
-    os.mkdir(org)
-    os.mkdir(f'{org}/data')
+    os.mkdir(f'orgs/{org}')
+    os.mkdir(f'orgs/{org}/data')
 
-    org_path = os.path.abspath(org)
+    org_path = os.path.abspath(f'orgs/{org}')
     copyfile(f'{os.getcwd()}/clean-data.py', f'{org_path}/clean-data.py' )
     datapackage2yml(dpkg, org_path)
 

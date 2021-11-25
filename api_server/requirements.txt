@@ -1,7 +1,5 @@
-frictionless[sql]  # need to install the SQL plugin
-psycopg2  # needed to upload data to the DB
-python-dotenv  # needed to load password for DB connection string
-wheel  # avoid warnings when installing packages
-python-dateutil  # needed for babbage
-babbage  # API server
-flask  # for babbage
+
+-e git+https://github.com/datopian/babbage.git@3cffb4415b8b29503ab2939917e2aadc9474bb2b#egg=babbage
+-e git+https://github.com/datopian/datapackage-pipelines-fiscal.git#egg=datapackage_pipelines_fiscal
+Flask==1.1.4
+google-cloud-storage==1.42.3

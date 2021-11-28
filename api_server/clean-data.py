@@ -15,7 +15,7 @@ def process_resource(_res_iter):
                         if v:
                             d[k] = v
                         else:
-                            d[k] = 'null'
+                            d[k] = '0'
                     else:
                         d[k] = v
                 yield d

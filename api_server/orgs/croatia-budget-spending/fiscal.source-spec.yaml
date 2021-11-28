@@ -1,0 +1,113 @@
+title: croatia-budget-spending
+dataset-name: croatia-budget-spending
+resource-name: croatia-budget-spending
+owner-id: R_kgDOGLf8Pw
+sources:
+- url: ./data/croatia-budget-spending__2016.csv
+  encoding: utf-8
+- url: ./data/croatia-budget-spending__2017.csv
+  encoding: utf-8
+- url: ./data/croatia-budget-spending__2018.csv
+  encoding: utf-8
+fields:
+- header: Year
+  columnType: date:fiscal-year
+  options: {}
+- header: admin1_code
+  columnType: administrative-classification:generic:level1:code
+  options: {}
+- header: admin1_label
+  columnType: administrative-classification:generic:level1:label
+  options: {}
+- header: admin2_code
+  columnType: administrative-classification:generic:level2:code
+  options: {}
+- header: admin2_label
+  columnType: administrative-classification:generic:level2:label
+  options: {}
+- header: activity1_code
+  columnType: activity:generic:program:code
+  options: {}
+- header: activity1_label
+  columnType: activity:generic:program:label
+  options: {}
+- header: activity2_code
+  columnType: activity:generic:subprogram:code
+  options: {}
+- header: activity2_label
+  columnType: activity:generic:subprogram:label
+  options: {}
+- header: activity3_code
+  columnType: activity:generic:project:code
+  options: {}
+- header: activity3_label
+  columnType: activity:generic:project:label
+  options: {}
+- header: func1_code
+  columnType: functional-classification:generic:level1:code
+  options: {}
+- header: func1_label
+  columnType: functional-classification:generic:level1:label
+  options: {}
+- header: fin_source_code
+  columnType: fin-source:generic:level1:code
+  options: {}
+- header: fin_source_label
+  columnType: fin-source:generic:level1:label
+  options: {}
+- header: econ1_code
+  columnType: economic-classification:generic:level1:code
+  options: {}
+- header: econ1_label
+  columnType: economic-classification:generic:level1:label
+  options: {}
+- header: econ2_code
+  columnType: economic-classification:generic:level2:code
+  options: {}
+- header: econ2_label
+  columnType: economic-classification:generic:level2:label
+  options: {}
+- header: econ3_code
+  columnType: economic-classification:generic:level3:code
+  options: {}
+- header: econ3_label
+  columnType: economic-classification:generic:level3:label
+  options: {}
+- header: approved_value
+  columnType: value
+  options:
+    groupChar: ','
+    decimalChar: .
+- header: executed_value
+  columnType: value
+  options:
+    groupChar: ','
+    decimalChar: .
+deduplicate: true
+postprocessing:
+- processor: clean-data
+  parameters:
+    columns:
+    - Year
+    - admin1_code
+    - admin1_label
+    - admin2_code
+    - admin2_label
+    - activity1_code
+    - activity1_label
+    - activity2_code
+    - activity2_label
+    - activity3_code
+    - activity3_label
+    - func1_code
+    - func1_label
+    - fin_source_code
+    - fin_source_label
+    - econ1_code
+    - econ1_label
+    - econ2_code
+    - econ2_label
+    - econ3_code
+    - econ3_label
+    - approved_value
+    - executed_value

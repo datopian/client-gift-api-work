@@ -7,7 +7,12 @@ sources:
   encoding: utf-8
 - url: ./data/budget-vs-actual-national__2016.csv
   encoding: utf-8
-
+- url: ./data/budget-vs-actual-national__2017.csv
+  encoding: utf-8
+- url: ./data/budget-vs-actual-national__2018.csv
+  encoding: utf-8
+- url: ./data/budget-vs-actual-national__2019.csv
+  encoding: utf-8
 fields:
 - header: budgetphase
   columnType: phase:id

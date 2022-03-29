@@ -5,7 +5,7 @@ import subprocess
 from google.cloud import storage
 from converter import datapackage2yml
 from shutil import copyfile
-
+import json
 
 
 def update_fiscal_schema(org):
@@ -61,12 +61,58 @@ def generate_org(org, dpkg):
     """
 
     # create directory
-    os.mkdir(f'orgs/{org}')
-    os.mkdir(f'orgs/{org}/data')
+    if not os.path.isdir(f'orgs/{org}'):
+        os.mkdir(f'orgs/{org}')
+        os.mkdir(f'orgs/{org}/data')
 
     org_path = os.path.abspath(f'orgs/{org}')
     copyfile(f'{os.getcwd()}/clean-data.py', f'{org_path}/clean-data.py' )
     datapackage2yml(dpkg, org_path)
+
+def generate_org2(org, hashname):
+    if not os.path.isdir(f'orgs/{org}'):
+        os.mkdir(f'orgs/{org}')
+        os.mkdir(f'orgs/{org}/data')
+    
+    org_path = os.path.abspath(f'orgs/{org}')
+    copyfile(f'{os.getcwd()}/clean-data.py', f'{org_path}/clean-data.py' )
+
+    gitstore_url = 'https://raw.githubusercontent.com/datopian/client-gift-api-work/main/opendpendingurl-dpkg.json'
+    gitstore = requests.get(gitstore_url).json()
+    dpkg_name = gitstore[f'{hashname}/{org}']
+    # obtain datapackage from bucket
+    storage_client = storage.Client()
+    bucket_name = "gift-datasets"
+    bucket = storage_client.get_bucket(bucket_name)
+    rname = f'openspending/datastore.openspending.org/{dpkg_name}'
+    blob = bucket.blob(rname)
+    dpkg = json.loads(blob.download_as_string(client=None))
+    # fetch table name
+    tablenames_url = 'https://raw.githubusercontent.com/datopian/client-gift-api-work/main/openspendingtable.json'
+    tablenames = requests.get(tablenames_url).json()[f'{hashname}/{org}']
+    datapackage2yml(dpkg, org_path, tablenames)
+
+    return dpkg
+
+
+def cloud_storage_openspending(org, hashname, dpkg):
+    storage_client = storage.Client()
+    bucket_name = "gift-datasets"
+    bucket = storage_client.get_bucket(bucket_name)
+
+    org_directory = os.path.join(os.getcwd(), f'orgs/{org}')
+
+    org_path = os.path.abspath(f'orgs/{org}')
+    if not os.path.isdir(f'{org_path}/data'):
+        os.mkdir(f'{org_directory}/data')
+    
+    for resource in dpkg["resources"][:2]:
+        rname = f'openspending/datastore.openspending.org/{hashname}/{org}/{resource["path"]}'
+        lname = f"{org_directory}/data/{resource['name']}.csv"
+
+        blob = bucket.blob(rname)
+        blob.download_to_filename(lname)
+
 
 
 if __name__== "__main__":

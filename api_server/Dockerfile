@@ -1,7 +1,5 @@
 FROM python:3.8.12-alpine3.14
 
-ENV POSTGRES_CONNECTION_STR=postgresql://steveoni@localhost/testing
-ENV DPP_DB_ENGINE=postgresql://steveoni@localhost/testing
 ENV APP_DIR=/srv/app
 
 RUN apk add --update nodejs npm
@@ -40,7 +38,7 @@ COPY requirements.txt ${APP_DIR}/requirements.txt
 
 
 # RUN pip install psycopg2-binary
-RUN pip install -r ${APP_DIR}/requirements.txt
+RUN pip install  -r  ${APP_DIR}/requirements.txt
 
 CMD ["python", "server.py"]
 

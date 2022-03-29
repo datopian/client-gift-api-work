@@ -3,7 +3,8 @@ from sqlalchemy import create_engine
 from babbage.manager import JSONCubeManager
 from babbage.api import configure_api
 from pipeline import (update_fiscal_schema, cloud_storage, 
-                      runpipeline_subcommand, generate_org )
+                      runpipeline_subcommand, generate_org,
+                      generate_org2, cloud_storage_openspending )
 import logging
 import requests
 import os
@@ -46,7 +47,18 @@ def pipeline(org):
     return "done"
 
 
+@app.route('/api/pipeline/openspending/<hashname>/<org>')
+def pipeline_openspending(hashname, org):
+    # Generate organization files
+    dpkg = generate_org2(org, hashname)
+    # Fetch cloud storage data
+    cloud_storage_openspending(org, hashname, dpkg)
+    # run pipe line command line
+    runpipeline_subcommand(org)
+    return "done"
+
+
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0')
+    app.run(host='0.0.0.0')
 
 # app.run(host="localhost", port=3000, debug=True)

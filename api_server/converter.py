@@ -28,7 +28,7 @@ def datapackage2yml(base_data, org_path, tb_name=None):
             data['fields'] = []
             for field in fields:
                 data_field = {}
-                data_field['header'] = field['title']
+                data_field['header'] = field['name'] if 'name' in field else field['title']
                 data_field['columnType'] = field['columnType'] if 'columnType' in field else field['osType']
 
                 if 'part' in data_field['columnType']:
@@ -53,7 +53,8 @@ def datapackage2yml(base_data, org_path, tb_name=None):
     data['postprocessing'] = [{
         'processor': 'clean-data',
         'parameters': {
-            'columns': [d['header'] for d in data['fields']]
+            'columns': [d['header'] for d in data['fields']],
+            'types': [d['columnType'] for d in data['fields']]
         }
     }]
 

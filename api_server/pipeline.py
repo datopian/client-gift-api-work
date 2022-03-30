@@ -106,7 +106,7 @@ def cloud_storage_openspending(org, hashname, dpkg):
     if not os.path.isdir(f'{org_path}/data'):
         os.mkdir(f'{org_directory}/data')
     
-    for resource in dpkg["resources"][:2]:
+    for resource in dpkg["resources"]:
         rname = f'openspending/datastore.openspending.org/{hashname}/{org}/{resource["path"]}'
         lname = f"{org_directory}/data/{resource['name']}.csv"
 

@@ -1,8 +1,0 @@
-
--e git+https://github.com/datopian/babbage.git@3cffb4415b8b29503ab2939917e2aadc9474bb2b#egg=babbage
--e git+https://github.com/datopian/datapackage-pipelines-fiscal.git#egg=datapackage_pipelines_fiscal
-Flask==1.1.4
-Jinja2==2.11.3
-MarkupSafe==2.0.1
-python-dotenv==0.19.1
-google-cloud-storage==1.42.3

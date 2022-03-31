@@ -1,0 +1,391 @@
+{
+  "@context": "http://schemas.frictionlessdata.io/fiscal-data-package.jsonld",
+  "bytes": 330089,
+  "count_of_rows": 5401,
+  "hash": "7e41dcd11866a100aab870c2e2f3128f",
+  "model": {
+    "dimensions": {
+      "activity": {
+        "attributes": {
+          "Programme_Number": {
+            "source": "Programme_Number",
+            "title": "Programme_Number"
+          },
+          "programme": {
+            "labelfor": "Programme_Number",
+            "source": "programme",
+            "title": "programme"
+          }
+        },
+        "dimensionType": "activity",
+        "primaryKey": [
+          "Programme_Number"
+        ]
+      },
+      "administrative-classification": {
+        "attributes": {
+          "Department": {
+            "source": "Department",
+            "title": "Department"
+          }
+        },
+        "classificationType": "administrative",
+        "dimensionType": "classification",
+        "primaryKey": [
+          "Department"
+        ]
+      },
+      "date": {
+        "attributes": {
+          "Fiscal_Year": {
+            "source": "Fiscal_Year",
+            "title": "Fiscal_Year"
+          }
+        },
+        "dimensionType": "datetime",
+        "primaryKey": [
+          "Fiscal_Year"
+        ]
+      },
+      "economic-classification": {
+        "attributes": {
+          "Economic_Classification_Level_1": {
+            "source": "Economic_Classification_Level_1",
+            "title": "Economic_Classification_Level_1"
+          },
+          "Economic_Classification_Level_2": {
+            "parent": "Economic_Classification_Level_1",
+            "source": "Economic_Classification_Level_2",
+            "title": "Economic_Classification_Level_2"
+          },
+          "Economic_Classification_Level_3": {
+            "parent": "Economic_Classification_Level_2",
+            "source": "Economic_Classification_Level_3",
+            "title": "Economic_Classification_Level_3"
+          },
+          "Economic_Classification_Level_4": {
+            "parent": "Economic_Classification_Level_3",
+            "source": "Economic_Classification_Level_4",
+            "title": "Economic_Classification_Level_4"
+          }
+        },
+        "classificationType": "economic",
+        "dimensionType": "classification",
+        "primaryKey": [
+          "Economic_Classification_Level_1",
+          "Economic_Classification_Level_2",
+          "Economic_Classification_Level_3",
+          "Economic_Classification_Level_4"
+        ]
+      },
+      "geo-source": {
+        "attributes": {
+          "Government": {
+            "source": "Government",
+            "title": "Government"
+          }
+        },
+        "dimensionType": "location",
+        "primaryKey": [
+          "Government"
+        ]
+      },
+      "phase": {
+        "attributes": {
+          "budget_phase": {
+            "source": "budget_phase",
+            "title": "budget_phase"
+          }
+        },
+        "dimensionType": "other",
+        "primaryKey": [
+          "budget_phase"
+        ]
+      }
+    },
+    "measures": {
+      "Value": {
+        "source": "Value",
+        "title": "Value"
+      }
+    }
+  },
+  "name": "estimates-of-provincial-expenditure-south-africa-2017-18",
+  "profile": "data-package",
+  "profiles": {
+    "fiscal": "*",
+    "tabular": "*"
+  },
+  "resources": [
+    {
+      "bytes": 247560,
+      "count_of_rows": 4050,
+      "dialect": {
+        "delimiter": ",",
+        "doubleQuote": true,
+        "lineTerminator": "\r\n",
+        "quoteChar": "\"",
+        "skipInitialSpace": false
+      },
+      "dpp:streamedFrom": "/Users/steveoni/Documents/Datopian/client-gift-api-work/api_server/orgs/estimates-of-provincial-expenditure-south-africa-2017-18/final/data/estimates-of-provincial-expenditure-south-africa-2017-18.csv",
+      "encoding": "utf-8",
+      "format": "csv",
+      "hash": "844b3b1604366f4fce985854d42c4a88",
+      "name": "estimates-of-provincial-expenditure-south-africa-2017-18",
+      "path": "data/estimates-of-provincial-expenditure-south-africa-2017-18.csv",
+      "profile": "data-resource",
+      "schema": {
+        "fields": [
+          {
+            "columnType": "activity:generic:program:label",
+            "conceptType": "activity",
+            "format": "default",
+            "name": "programme",
+            "slug": "programme",
+            "title": "programme",
+            "type": "string"
+          },
+          {
+            "columnType": "phase:id",
+            "conceptType": "phase",
+            "format": "default",
+            "name": "budget_phase",
+            "slug": "budget_phase",
+            "title": "budget_phase",
+            "type": "string"
+          },
+          {
+            "columnType": "administrative-classification:generic:level1:code",
+            "conceptType": "administrative-classification",
+            "format": "default",
+            "name": "Department",
+            "slug": "Department",
+            "title": "Department",
+            "type": "string"
+          },
+          {
+            "columnType": "activity:generic:program:code",
+            "conceptType": "activity",
+            "format": "default",
+            "name": "Programme_Number",
+            "slug": "Programme_Number",
+            "title": "Programme_Number",
+            "type": "string"
+          },
+          {
+            "columnType": "date:fiscal-year",
+            "conceptType": "date",
+            "format": "default",
+            "name": "Fiscal_Year",
+            "slug": "Fiscal_Year",
+            "title": "Fiscal_Year",
+            "type": "integer"
+          },
+          {
+            "columnType": "economic-classification:generic:level1:code",
+            "conceptType": "economic-classification",
+            "format": "default",
+            "name": "Economic_Classification_Level_1",
+            "slug": "Economic_Classification_Level_1",
+            "title": "Economic_Classification_Level_1",
+            "type": "string"
+          },
+          {
+            "columnType": "economic-classification:generic:level2:code",
+            "conceptType": "economic-classification",
+            "format": "default",
+            "name": "Economic_Classification_Level_2",
+            "slug": "Economic_Classification_Level_2",
+            "title": "Economic_Classification_Level_2",
+            "type": "string"
+          },
+          {
+            "columnType": "economic-classification:generic:level3:code",
+            "conceptType": "economic-classification",
+            "format": "default",
+            "name": "Economic_Classification_Level_3",
+            "slug": "Economic_Classification_Level_3",
+            "title": "Economic_Classification_Level_3",
+            "type": "string"
+          },
+          {
+            "columnType": "economic-classification:generic:level4:code",
+            "conceptType": "economic-classification",
+            "format": "default",
+            "name": "Economic_Classification_Level_4",
+            "slug": "Economic_Classification_Level_4",
+            "title": "Economic_Classification_Level_4",
+            "type": "string"
+          },
+          {
+            "columnType": "value",
+            "conceptType": "value",
+            "decimalChar": ".",
+            "format": "default",
+            "groupChar": "",
+            "name": "Value",
+            "slug": "Value",
+            "title": "Value",
+            "type": "number"
+          },
+          {
+            "columnType": "geo-source:target:level1:code",
+            "conceptType": "geo-source",
+            "format": "default",
+            "name": "Government",
+            "slug": "Government",
+            "title": "Government",
+            "type": "string"
+          }
+        ],
+        "primaryKey": [
+          "budget_phase",
+          "Department",
+          "Programme_Number",
+          "Fiscal_Year",
+          "Economic_Classification_Level_1",
+          "Economic_Classification_Level_2",
+          "Economic_Classification_Level_3",
+          "Economic_Classification_Level_4",
+          "Government"
+        ]
+      }
+    },
+    {
+      "bytes": 165040,
+      "count_of_rows": 2700,
+      "dialect": {
+        "delimiter": ",",
+        "doubleQuote": true,
+        "lineTerminator": "\r\n",
+        "quoteChar": "\"",
+        "skipInitialSpace": false
+      },
+      "dpp:streamedFrom": "/Users/steveoni/Documents/Datopian/client-gift-api-work/api_server/orgs/estimates-of-provincial-expenditure-south-africa-2017-18/final/data/estimates-of-provincial-expenditure-south-africa-2017-18__0.csv",
+      "encoding": "utf-8",
+      "format": "csv",
+      "hash": "844b3b1604366f4fce985854d42c4a88",
+      "name": "estimates-of-provincial-expenditure-south-africa-2017-18__0",
+      "path": "data/estimates-of-provincial-expenditure-south-africa-2017-18__0.csv",
+      "profile": "data-resource",
+      "schema": {
+        "fields": [
+          {
+            "columnType": "activity:generic:program:label",
+            "conceptType": "activity",
+            "format": "default",
+            "name": "programme",
+            "slug": "programme",
+            "title": "programme",
+            "type": "string"
+          },
+          {
+            "columnType": "phase:id",
+            "conceptType": "phase",
+            "format": "default",
+            "name": "budget_phase",
+            "slug": "budget_phase",
+            "title": "budget_phase",
+            "type": "string"
+          },
+          {
+            "columnType": "administrative-classification:generic:level1:code",
+            "conceptType": "administrative-classification",
+            "format": "default",
+            "name": "Department",
+            "slug": "Department",
+            "title": "Department",
+            "type": "string"
+          },
+          {
+            "columnType": "activity:generic:program:code",
+            "conceptType": "activity",
+            "format": "default",
+            "name": "Programme_Number",
+            "slug": "Programme_Number",
+            "title": "Programme_Number",
+            "type": "string"
+          },
+          {
+            "columnType": "date:fiscal-year",
+            "conceptType": "date",
+            "format": "default",
+            "name": "Fiscal_Year",
+            "slug": "Fiscal_Year",
+            "title": "Fiscal_Year",
+            "type": "integer"
+          },
+          {
+            "columnType": "economic-classification:generic:level1:code",
+            "conceptType": "economic-classification",
+            "format": "default",
+            "name": "Economic_Classification_Level_1",
+            "slug": "Economic_Classification_Level_1",
+            "title": "Economic_Classification_Level_1",
+            "type": "string"
+          },
+          {
+            "columnType": "economic-classification:generic:level2:code",
+            "conceptType": "economic-classification",
+            "format": "default",
+            "name": "Economic_Classification_Level_2",
+            "slug": "Economic_Classification_Level_2",
+            "title": "Economic_Classification_Level_2",
+            "type": "string"
+          },
+          {
+            "columnType": "economic-classification:generic:level3:code",
+            "conceptType": "economic-classification",
+            "format": "default",
+            "name": "Economic_Classification_Level_3",
+            "slug": "Economic_Classification_Level_3",
+            "title": "Economic_Classification_Level_3",
+            "type": "string"
+          },
+          {
+            "columnType": "economic-classification:generic:level4:code",
+            "conceptType": "economic-classification",
+            "format": "default",
+            "name": "Economic_Classification_Level_4",
+            "slug": "Economic_Classification_Level_4",
+            "title": "Economic_Classification_Level_4",
+            "type": "string"
+          },
+          {
+            "columnType": "value",
+            "conceptType": "value",
+            "decimalChar": ".",
+            "format": "default",
+            "groupChar": "",
+            "name": "Value",
+            "slug": "Value",
+            "title": "Value",
+            "type": "number"
+          },
+          {
+            "columnType": "geo-source:target:level1:code",
+            "conceptType": "geo-source",
+            "format": "default",
+            "name": "Government",
+            "slug": "Government",
+            "title": "Government",
+            "type": "string"
+          }
+        ],
+        "primaryKey": [
+          "budget_phase",
+          "Department",
+          "Programme_Number",
+          "Fiscal_Year",
+          "Economic_Classification_Level_1",
+          "Economic_Classification_Level_2",
+          "Economic_Classification_Level_3",
+          "Economic_Classification_Level_4",
+          "Government"
+        ]
+      }
+    }
+  ],
+  "revision": 0,
+  "title": "estimates-of-provincial-expenditure-south-africa-2017-18"
+}

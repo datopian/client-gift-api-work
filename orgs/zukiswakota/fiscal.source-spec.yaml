@@ -1,0 +1,43 @@
+owner-id: fdp__ba94aabb80080745__uk_northern_irela
+title: zukiswakota
+dataset-name: zukiswakota
+resource-name: zukiswakota
+sources:
+- url: ./data/education-condiitional-grants-south-africa.csv
+  encoding: utf-8
+fields:
+- header: YEAR
+  columnType: date:fiscal-year
+  options: {}
+- header: PROVINCE CODE
+  columnType: geo-source:target:codeList
+  options: {}
+- header: 'PROVINCE'
+  columnType: geo-source:target:title
+  options: {}
+- header: 'SCHOOL NUTRITION BUDGET'
+  columnType: value
+  options:
+    decimalChar: .
+    groupChar: ','
+- header: COMMUNITY LIBRARY SERVICES GRANT
+  columnType: value
+  options:
+    decimalChar: .
+    groupChar: ','
+deduplicate: true
+postprocessing:
+- processor: clean-data
+  parameters:
+    columns:
+    - YEAR
+    - PROVINCE CODE
+    - 'PROVINCE'
+    - 'SCHOOL NUTRITION BUDGET'
+    - COMMUNITY LIBRARY SERVICES GRANT
+    types:
+    - date:fiscal-year
+    - geo-source:target:codeList
+    - geo-source:target:title
+    - value
+    - value

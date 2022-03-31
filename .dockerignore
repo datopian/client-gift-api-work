@@ -1,0 +1,14 @@
+opapienv
+**/.dpp/
+**/json2yaml/
+**/**/.dpp/
+**/**/normalized/
+**/**/denormalized/
+**/**/final/
+**/samples/
+docker-compose.dev.yml
+opendpendingcouuntry-dataset.json
+opendpendingurl-dpkg.json
+openspendingtable.json
+.env
+**/*.zip

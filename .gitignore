@@ -1,4 +1,4 @@
-opsapienv
+opapienv
 **/.dpp/
 **/json2yaml/
 **/**/.dpp/
@@ -6,3 +6,6 @@ opsapienv
 **/**/denormalized/
 **/**/final/
 **/samples/
+**/*.zip
+.env
+**/*.csv

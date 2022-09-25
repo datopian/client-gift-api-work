@@ -24,12 +24,10 @@ services:
     volumes:
       - ./:/srv/app
     environment:
-      - POSTGRES_CONNECTION_STR=postgresql://gift_api:gift_api@db/gift_api
-      - DPP_DB_ENGINE=postgresql://gift_api:gift_api@db/gift_api
+      - DATABASE_URL=postgresql://gift_api:gift_api@db/gift_api
       - GOOGLE_APPLICATION_CREDENTIALS
       - BUCKET_NAME
       - DATASETS_DIR=datasets
-      - MODELS_DIR=models2
 
 volumes:
   db-data:

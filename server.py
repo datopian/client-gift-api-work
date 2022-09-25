@@ -15,7 +15,7 @@ load_dotenv()
 log = logging.getLogger(__name__)
 
 app = Flask(__name__)
-engine = create_engine(os.getenv('POSTGRES_CONNECTION_STR'))
+engine = create_engine(os.getenv('DATABASE_URL'))
 models_directory = 'models/'
 manager = JSONCubeManager(engine, models_directory)
 blueprint = configure_api(app, manager)

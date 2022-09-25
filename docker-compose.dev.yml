@@ -1,20 +1,30 @@
 version: "3"
 
 services:
-  gift-dev:
-    image: steveoni/giftapi:1.0
-    env_file:
-      - .env
+
+  db:
+    image: postgres:11.6
+    volumes:
+      - "db-data:/var/lib/postgresql/"
+    environment:
+      - POSTGRES_DBNAME=gift_api
+      - POSTGRES_USER=gift_api
+      - POSTGRES_PASS=gift_api
+
+  web:
+    build: .
+    depends_on:
+      - db
     ports:
-      - "0.0.0.0:3000:5000"
+      - "5000:5000"
     volumes:
-      - /Users/steveoni/Downloads/gift-data-110ad1f62153.json:/tmp/keys/gift-data-110ad1f62153.json
-  gift-db:
-    container_name: gift-db2
-    image: postgres
-    env_file:
-      - .env
-    volumes:
-      - pg_data1:/var/lib/postgresql/data2
+      - ./:/srv/app
+    environment:
+      - POSTGRES_CONNECTION_STR=postgresql://gift_api:gift_api@db/gift_api
+      - DPP_DB_ENGINE=postgresql://gift_api:gift_api@db/gift_api
+      - GOOGLE_APPLICATION_CREDENTIALS
+      - BUCKET_NAME
+      - DATASETS_DIR=datasets
+
 volumes:
-  pg_data1:
+  db-data:

@@ -47,4 +47,4 @@ USER containeruser
 
 WORKDIR ${APP_DIR}
 
-CMD gunicorn --timeout 120 -w 4 'server:app' --log-level LEVEL --bind 0.0.0.0:5000
+CMD gunicorn --timeout 1200 -w 4 'server:app' --log-level LEVEL --bind 0.0.0.0:5000

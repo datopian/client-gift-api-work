@@ -4,8 +4,7 @@
 
 Set the following environment variables
 
-- POSTGRES_CONNECTION_STR=postgresql://... - Postgres database URL
-- DPP_DB_ENGINE - Same as above
+- DATABASE_URL=postgresql://... - Postgres database URL
 - GOOGLE_APPLICATION_CREDENTIALS - JSON credentials file for Google Cloud service user with bucket and storage object read access to the GIFT portal Giftless server's files
 - BUCKET_NAME - Google Cloud Storage bucket for GIFT portal's Giftless server
 - DATASETS_DIR - the working directory for datapackage-pipelines used for importing datasets

@@ -14,8 +14,11 @@ from dotenv import load_dotenv
 load_dotenv()
 log = logging.getLogger(__name__)
 
+database_url = os.environ['DATABASE_URL']
+os.environ["DPP_DB_ENGINE"] = database_url
+
 app = Flask(__name__)
-engine = create_engine(os.getenv('DATABASE_URL'))
+engine = create_engine(database_url)
 models_directory = 'models/'
 manager = JSONCubeManager(engine, models_directory)
 blueprint = configure_api(app, manager)

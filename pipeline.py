@@ -8,8 +8,8 @@ from shutil import copyfile
 import json
 
 
-def update_fiscal_schema(datasets_dir, org):
-    org_directory = os.path.join(os.getcwd(), f'{datasets_dir}/{org}')
+def update_fiscal_schema(org):
+    org_directory = os.path.join(os.getcwd(), f'pipelines/{org}')
     org_yml = org_directory + "/fiscal.source-spec.yaml"
     github_dpkg = f'https://raw.githubusercontent.com/gift-data/{org}/main/datapackage.json'
     dpkg = requests.get(github_dpkg).json()
@@ -25,15 +25,15 @@ def update_fiscal_schema(datasets_dir, org):
     yaml.dump(fiscal_yml, open(org_yml, "w"), sort_keys=False)
 
 
-def cloud_storage(datasets_dir, dpkg, org):
+def cloud_storage(dpkg, org):
     storage_client = storage.Client()
     bucket_name = os.environ.get("BUCKET_NAME")
     bucket = storage_client.get_bucket(bucket_name)
 
     owner_id = dpkg["id"]
-    org_directory = os.path.join(os.getcwd(), f'{datasets_dir}/{org}')
+    org_directory = os.path.join(os.getcwd(), f'pipelines/{org}')
 
-    org_path = os.path.abspath(f'{datasets_dir}/{org}')
+    org_path = os.path.abspath(f'pipelines/{org}')
     if not os.path.isdir(f'{org_path}/data'):
         os.mkdir(f'{org_directory}/data')
 
@@ -45,15 +45,15 @@ def cloud_storage(datasets_dir, dpkg, org):
         blob.download_to_filename(lname)
 
 
-def runpipeline_subcommand(datasets_dir, org):
+def runpipeline_subcommand(org):
     try:
-        subprocess.call(["dpp", "run", "all"], cwd=f"./{datasets_dir}/{org}")
+        subprocess.call(["dpp", "run", "all"], cwd=f"./pipelines/{org}")
     except subprocess.CalledProcessError as e:
         print(e.output)
         raise(e)
 
 
-def generate_org(datasets_dir, org, dpkg):
+def generate_org(org, dpkg):
     """
     Generate organisation folder
     containing all neccessary files for
@@ -61,24 +61,24 @@ def generate_org(datasets_dir, org, dpkg):
     """
 
     # create directory
-    if not os.path.isdir(f'{datasets_dir}'):
-        os.mkdir(f'{datasets_dir}')
-    if not os.path.isdir(f'{datasets_dir}/{org}'):
-        os.mkdir(f'{datasets_dir}/{org}')
-        os.mkdir(f'{datasets_dir}/{org}/data')
+    if not os.path.isdir(f'pipelines'):
+        os.mkdir(f'pipelines')
+    if not os.path.isdir(f'pipelines/{org}'):
+        os.mkdir(f'pipelines/{org}')
+        os.mkdir(f'pipelines/{org}/data')
 
-    org_path = os.path.abspath(f'{datasets_dir}/{org}')
+    org_path = os.path.abspath(f'pipelines/{org}')
     copyfile(f'{os.getcwd()}/clean-data.py', f'{org_path}/clean-data.py' )
     datapackage2yml(dpkg, org_path)
 
-def generate_org2(datasets_dir, org, hashname):
-    if not os.path.isdir(f'{datasets_dir}'):
-        os.mkdir(f'{datasets_dir}')
-    if not os.path.isdir(f'{datasets_dir}/{org}'):
-        os.mkdir(f'{datasets_dir}/{org}')
-        os.mkdir(f'{datasets_dir}/{org}/data')
+def generate_org2(org, hashname):
+    if not os.path.isdir(f'pipelines'):
+        os.mkdir(f'pipelines')
+    if not os.path.isdir(f'pipelines/{org}'):
+        os.mkdir(f'pipelines/{org}')
+        os.mkdir(f'pipelines/{org}/data')
 
-    org_path = os.path.abspath(f'{datasets_dir}/{org}')
+    org_path = os.path.abspath(f'pipelines/{org}')
     copyfile(f'{os.getcwd()}/clean-data.py', f'{org_path}/clean-data.py' )
 
     gitstore_url = 'https://raw.githubusercontent.com/datopian/client-gift-api-work/main/opendpendingurl-dpkg.json'
@@ -104,9 +104,9 @@ def cloud_storage_openspending(org, hashname, dpkg):
     bucket_name = "gift-datasets"
     bucket = storage_client.get_bucket(bucket_name)
 
-    org_directory = os.path.join(os.getcwd(), f'{datasets_dir}/{org}')
+    org_directory = os.path.join(os.getcwd(), f'pipelines/{org}')
 
-    org_path = os.path.abspath(f'{datasets_dir}/{org}')
+    org_path = os.path.abspath(f'pipelines/{org}')
     if not os.path.isdir(f'{org_path}/data'):
         os.mkdir(f'{org_directory}/data')
 
@@ -123,5 +123,5 @@ if __name__== "__main__":
     org = "mexico"
     github_dpkg = f'https://raw.githubusercontent.com/gift-data/{org}/main/datapackage.json'
     dpkg = requests.get(github_dpkg).json()
-    runpipeline_subcommand(org)
+    runpipeline_subcommand(os.environ['DATASETS_DIR'], org)
     # cloud_storage(dpkg,org)

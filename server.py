@@ -24,8 +24,6 @@ manager = JSONCubeManager(engine, models_directory)
 blueprint = configure_api(app, manager)
 app.register_blueprint(blueprint, url_prefix='/api/babbage/')
 
-datasets_dir = os.environ['DATASETS_DIR']
-
 @app.route('/api/pipeline/<org>')
 def pipeline(org):
     """
@@ -37,20 +35,20 @@ def pipeline(org):
     dpkg = requests.get(github_dpkg).json()
 
     # check if organisation folder already exist
-    org_path = os.path.abspath(f'{datasets_dir}/{org}')
+    org_path = os.path.abspath(f'pipelines/{org}')
     if (not os.path.isdir(org_path)):
-        generate_org(datasets_dir, org, dpkg)
+        generate_org(org, dpkg)
 
     # update fiscal YAML file
-    update_fiscal_schema(datasets_dir, org)
+    update_fiscal_schema(org)
 
     # download resources from google cloud
     print("Downloading resources from Google bucket")
-    cloud_storage(datasets_dir, dpkg, org)
+    cloud_storage(dpkg, org)
 
     # run datapackage-pipeline command line
     print("START PIPELINE SUBCOMMAND")
-    runpipeline_subcommand(datasets_dir, org)
+    runpipeline_subcommand(org)
 
     return "done"
 
@@ -58,7 +56,7 @@ def pipeline(org):
 @app.route('/api/pipeline/openspending/<hashname>/<org>')
 def pipeline_openspending(hashname, org):
     # Generate organization files
-    dpkg = generate_org2(datasets_dir, org, hashname)
+    dpkg = generate_org2(org, hashname)
     # Fetch cloud storage data
     cloud_storage_openspending(org, hashname, dpkg)
     # run pipe line command line

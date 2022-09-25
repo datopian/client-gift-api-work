@@ -27,7 +27,6 @@ services:
       - DATABASE_URL=postgresql://gift_api:gift_api@db/gift_api
       - GOOGLE_APPLICATION_CREDENTIALS
       - BUCKET_NAME
-      - DATASETS_DIR=datasets
 
 volumes:
   db-data:

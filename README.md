@@ -7,9 +7,10 @@ Set the following environment variables
 - DATABASE_URL=postgresql://... - Postgres database URL
 - GOOGLE_APPLICATION_CREDENTIALS - JSON credentials file for Google Cloud service user with bucket and storage object read access to the GIFT portal Giftless server's files
 - BUCKET_NAME - Google Cloud Storage bucket for GIFT portal's Giftless server
-- DATASETS_DIR - the working directory for datapackage-pipelines used for importing datasets
 
-Babbage model JSON files define the babbage cube for each dataset. These are written to and read from the `models` directory. These should persist, so make sure to mount this directory out of the container if running in Docker.
+Datapackage pipelines are dynamically set up in the `pipelines` directory - a subdirectory for each pipeline. It could be useful to mount this directory out of a docker container.
+
+Babbage model JSON files define the babbage cube for each dataset. These are written to and read from the `models` directory. ***These should persist, so make sure to mount this directory out of the container if running in Docker.***
 
 
 ## Development setup

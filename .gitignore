@@ -1,5 +1,6 @@
-datasets
+pipelines/*
 models/*
+
 
 opapienv
 **/.dpp/

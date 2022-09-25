@@ -12,7 +12,11 @@ services:
       - POSTGRES_PASS=gift_api
 
   web:
-    build: .
+    build:
+      context: .
+      args:
+        USER_ID: ${USER_ID:-1001}
+        GROUP_ID: ${GROUP_ID:-1001}
     depends_on:
       - db
     ports:
@@ -25,6 +29,7 @@ services:
       - GOOGLE_APPLICATION_CREDENTIALS
       - BUCKET_NAME
       - DATASETS_DIR=datasets
+      - MODELS_DIR=models2
 
 volumes:
   db-data:

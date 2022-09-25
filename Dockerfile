@@ -27,21 +27,24 @@ RUN apk add tzdata \
         openssl-dev \
         linux-headers
 
-RUN npm install -g os-types
+COPY requirements.txt /tmp/requirements.txt
 
-# RUN mkdir -p /var/lib/gift-api
-WORKDIR ${APP_DIR}
+# RUN pip install psycopg2-binary
+RUN pip install  -r  /tmp/requirements.txt
+
+RUN npm install -g os-types
 
 COPY . ${APP_DIR}
 
-COPY requirements.txt ${APP_DIR}/requirements.txt
+ARG USER_ID=1001
+ARG GROUP_ID=1001
 
+RUN set -ex; \
+  addgroup --gid $GROUP_ID --system containeruser; \
+  adduser --system --uid $USER_ID -G containeruser containeruser; \
+  chown -R containeruser:containeruser $APP_DIR
+USER containeruser
 
-# RUN pip install psycopg2-binary
-RUN pip install  -r  ${APP_DIR}/requirements.txt
+WORKDIR ${APP_DIR}
 
 CMD gunicorn -w 4 'server:app' --log-level LEVEL --bind 0.0.0.0:5000
-
-
-
-

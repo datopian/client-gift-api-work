@@ -1,6 +1,6 @@
 
 git+https://github.com/fiscaltransparency/babbage.git@3cffb4415b8b29503ab2939917e2aadc9474bb2b#egg=babbage
-git+https://github.com/datopian/datapackage-pipelines-fiscal.git#egg=datapackage_pipelines_fiscal
+git+https://github.com/fiscaltransparency/datapackage-pipelines-fiscal.git#egg=datapackage_pipelines_fiscal
 Flask==1.1.4
 Jinja2==2.11.3
 MarkupSafe==2.0.1
